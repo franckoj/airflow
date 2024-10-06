@@ -1,0 +1,7 @@
+*.pycache
+.pytest*
+.airflowenv
+__pycache__
+.idea
+logs/
+.DS_Store

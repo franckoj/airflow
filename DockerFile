@@ -1,0 +1,19 @@
+# Use the official Apache Airflow image
+FROM apache/airflow:2.7.0
+
+# Install additional Python packages if needed (optional)
+# RUN pip install <package_name>
+
+# Switch to root to allow directory permissions modification
+USER root
+
+# Ensure that the dags, logs, and plugins directories have the correct permissions
+RUN mkdir -p /opt/airflow/dags /opt/airflow/logs /opt/airflow/plugins \
+    && chown -R airflow: /opt/airflow/
+
+# Switch back to the airflow user
+USER airflow
+
+# Set environment variables for Airflow
+ENV AIRFLOW_HOME=/opt/airflow
+# COPY tests .
