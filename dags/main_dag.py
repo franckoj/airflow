@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime
 from airflow.models import Variable
 
-from common.func import hello_world
+from common.loader import hello_world
 
 # Default arguments for the DAG
 default_args = {
@@ -17,7 +17,7 @@ var = Variable.get("greet")
 import configparser
 
 config = configparser.ConfigParser()
-config.read('/opt/airflow/dags/config.cfg')
+config.read('/opt/airflow/dags/common/config.cfg')
 
 ips = config['database']['host']
 
@@ -30,13 +30,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    for i in ips:
+    # for i in ips:
 
         # Define the task
         hello_world_task = PythonOperator(
-            task_id=f'{i}_hello_world_task',
+            task_id=f'{ips}_hello_world_task',
             python_callable=hello_world,
-            op_args={"n":var}
+            op_args={"n":5,"a":4}
         )
 
         # Define task dependencies (if any)
