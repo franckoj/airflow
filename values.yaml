@@ -1,10 +1,17 @@
+hostPath:
+  dags: "/Users/francisjoseph/Desktop/Projects/airflow/dags"
+  # logs: ""
 airflow:
-  extraVolumes:
-    - name: dags-volume
-      hostPath:
-        path: "/Users/francisjoseph/Desktop/Projects/airflow/dags"
-        type: Directory
-  extraVolumeMounts:
-    - name: dags-volume
-      mountPath: /opt/airflow/dags
-      readOnly: true
+  executor: KubernetesExecutor
+  dags:
+    persistence:
+      enabled: true
+      existingClaim: airflow-dags
+      storageClassName: local-storage
+  # logs:
+  #   persistence:
+  #     enabled: true
+  #     existingClaim: airflow-logs
+  #     storageClassName: local-storage    
+  redis:
+    enabled: false

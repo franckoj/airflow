@@ -14,7 +14,7 @@ fi
 
 # Step 2: Copy contents from the source folder to the destination folder
 if [ -d "$SOURCE_FOLDER" ]; then
-    echo "Copying contents from $SOURCE_FOLDER to $DEST_FOLDER"
+    echo "Copying contents from $SOURCE_FOLDER to $DEST_FOLDER" 
     cp -r "$SOURCE_FOLDER"/* "$DEST_FOLDER"/
 else
     echo "Source folder $SOURCE_FOLDER does not exist. Exiting."

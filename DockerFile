@@ -16,4 +16,5 @@ USER airflow
 
 # Set environment variables for Airflow
 ENV AIRFLOW_HOME=/opt/airflow
-# COPY tests .
+
+COPY dags /opt/airflow

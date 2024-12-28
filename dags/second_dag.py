@@ -23,5 +23,8 @@ with DAG(
     end_task = DummyOperator(
         task_id='second_end_task'
     )
+    end_task1 = DummyOperator(
+        task_id='second_end_task1'
+    )
     
-    start_task >> end_task
+    start_task >> end_task >> end_task1
