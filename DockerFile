@@ -1,5 +1,5 @@
 # Use the official Apache Airflow image
-FROM apache/airflow:2.7.0
+FROM apache/airflow:latest
 
 # Install additional Python packages if needed (optional)
 # RUN pip install <package_name>
